@@ -1,0 +1,430 @@
+/* ==========================================================
+   MealTimes — Essential Acids
+   Основа: 1920×1080, размеры в пропорциях (vw/vh + clamp)
+   ========================================================== */
+
+:root {
+  --bg: #cfd5d1;           /* основной фон сайта */
+  --text: #000000;         /* описания */
+  --heading: #018112;      /* заголовки */
+  --heading-dark: #016a0f; /* hover кнопки */
+  --nav-h: clamp(56px, 7.4vh, 80px);
+  --screen-pad: clamp(2rem, 5vh, 3.5rem);  /* вертикальный отступ экранов */
+
+  --bs-body-font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --bs-body-bg: var(--bg);
+  --bs-body-color: var(--text);
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--bs-body-font-family);
+}
+
+h1, h2, h3, h4, h5, h6 { color: var(--heading); }
+
+/* ---------- Меню ---------- */
+.site-nav {
+  height: var(--nav-h);
+  background: rgba(207, 213, 209, .92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.site-logo { height: clamp(28px, 3.7vh, 40px); width: auto; display: block; }
+
+/* ---------- Экраны ---------- */
+.screen { padding: var(--screen-pad) 0; }
+
+/* Первый экран — на всю высоту окна */
+.screen-hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-top: calc(var(--nav-h) + var(--screen-pad));
+  display: flex;
+  align-items: center;
+}
+.screen-hero > .container { width: 100%; }
+
+/* ---------- ЭКРАН 1 ---------- */
+.hero-title {
+  font-weight: 800;
+  font-size: clamp(2rem, 3.4vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  margin-bottom: 1.5rem;
+  max-width: 14em;
+}
+.hero-lead {
+  font-size: clamp(1.05rem, 1.25vw, 1.5rem);
+  line-height: 1.5;
+  max-width: 30em;
+  margin-bottom: 2.25rem;
+}
+@media (max-width: 991.98px) {
+  .hero-title, .hero-lead { margin-left: auto; margin-right: auto; }
+}
+
+.btn-brand {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--heading);
+  --bs-btn-border-color: var(--heading);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--heading-dark);
+  --bs-btn-hover-border-color: var(--heading-dark);
+  --bs-btn-active-bg: var(--heading-dark);
+  --bs-btn-focus-shadow-rgb: 1, 129, 18;
+  font-weight: 700;
+  border-radius: 50rem;
+  padding: .9em 2.2em;
+  font-size: clamp(1rem, 1.05vw, 1.25rem);
+}
+
+.hero-facts {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: 500;
+  font-size: clamp(.85rem, .85vw, 1rem);
+}
+@media (max-width: 991.98px) { .hero-facts { justify-content: center; } }
+.hero-facts li + li::before {
+  content: "·";
+  margin: 0 .6em;
+  color: var(--heading);
+  font-weight: 800;
+}
+
+/* Фото половины экрана (экраны 1 и 3) */
+.hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100svh - var(--nav-h) - 4rem);
+  object-fit: contain;
+  margin-inline: auto;
+}
+@media (max-width: 991.98px) {
+  .hero-img { max-width: 420px; max-height: 45svh; }
+}
+
+/* ---------- ЭКРАН 2 ---------- */
+.why-heading {
+  font-weight: 900;
+  font-size: clamp(2.25rem, 3.8vw, 4.5rem);   /* ~72px при 1920 */
+  line-height: 1.1;
+  letter-spacing: -.015em;
+  margin-bottom: clamp(1.25rem, 3.5vh, 2.5rem);
+}
+.why-card {
+  height: 100%;
+  background: rgba(255, 255, 255, .55);
+  border-radius: 1.25rem;
+  padding: clamp(1.5rem, 2vw, 2.5rem);
+  text-align: center;
+}
+.why-title {
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1.45vw, 1.75rem);
+  margin-bottom: .75rem;
+}
+.why-text {
+  font-size: clamp(1rem, 1.05vw, 1.25rem);
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 22em;
+}
+
+/* ---------- ЭКРАН 3: Цифры ---------- */
+.screen-numbers .stats {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+}
+.screen-numbers .stats li {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .1em .4em;
+  line-height: 1.05;
+  padding: clamp(.5rem, 1.4vh, 1rem) 0;
+}
+.screen-numbers .stats li + li { border-top: 1px solid rgba(1, 129, 18, .25); }
+.screen-numbers .stat-num {
+  font-weight: 900;
+  font-size: clamp(2.5rem, 4.4vw, 5.25rem);   /* ~84px при 1920 */
+  color: var(--heading);
+  letter-spacing: -.02em;
+}
+.screen-numbers .stat-label {
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1.9vw, 2.25rem);  /* ~36px при 1920 */
+  color: var(--text);
+}
+.screen-numbers .stats-note {
+  margin: 0;
+  font-size: clamp(.85rem, .85vw, 1rem);
+}
+@media (max-width: 991.98px) {
+  .screen-numbers .stats li { justify-content: center; }
+}
+
+/* ---------- ЭКРАН 4: Баланс на тарелке ---------- */
+/* Фото ~55–58% ширины на ПК */
+@media (min-width: 992px) {
+  .screen-plate .plate-photo-col { flex: 0 0 auto; width: 55%; }
+  .screen-plate .plate-photo-col + .col-lg-5 { width: 45%; }
+}
+.screen-plate .plate-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100svh - var(--nav-h) - 3rem);
+  object-fit: cover;
+  border-radius: 1.25rem;
+  margin-inline: auto;
+}
+@media (max-width: 991.98px) {
+  .screen-plate .plate-img { max-height: 55svh; }
+}
+.screen-plate .plate-title {
+  font-weight: 800;
+  font-size: clamp(1.75rem, 2.4vw, 2.75rem);   /* ~44px при 1920 */
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.screen-plate .plate-lead {
+  font-size: clamp(1rem, 1vw, 1.2rem);
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+}
+.screen-plate .plate-point {
+  padding: .8rem 0 .8rem 1rem;
+  border-left: 3px solid var(--heading);
+}
+.screen-plate .plate-point + .plate-point { margin-top: .5rem; }
+.screen-plate .plate-point h3 {
+  font-weight: 700;
+  font-size: clamp(1.1rem, 1.2vw, 1.4rem);
+  margin-bottom: .25rem;
+}
+.screen-plate .plate-point p {
+  font-size: clamp(.95rem, .95vw, 1.1rem);
+  line-height: 1.5;
+  margin: 0;
+}
+.screen-plate .plate-closing {
+  font-weight: 700;
+  font-size: clamp(1rem, 1.1vw, 1.3rem);
+  margin: 1.5rem 0 1rem;
+}
+.screen-plate .plate-note {
+  font-size: clamp(.75rem, .7vw, .85rem);
+  line-height: 1.45;
+  color: rgba(0, 0, 0, .65);
+  margin: 0;
+}
+
+/* Экран 4: свечение фото */
+.screen-plate .plate-img { box-shadow: 0px 0px 8px #018112; }
+
+/* ---------- ЭКРАН 5: Состав ---------- */
+.inside-heading {
+  font-weight: 900;
+  font-size: clamp(2.25rem, 3.8vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -.015em;
+  margin-bottom: clamp(1.25rem, 3.5vh, 2.5rem);
+}
+.screen-inside .inside-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: calc(100svh - var(--nav-h) - 12rem);
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  border-radius: 1.25rem;
+  margin-inline: auto;
+}
+@media (max-width: 991.98px) {
+  .screen-inside .inside-img { max-width: 420px; max-height: 45svh; }
+}
+.screen-inside .inside-card {
+  height: 100%;
+  background: rgba(255, 255, 255, .55);
+  border-radius: 1.25rem;
+  padding: clamp(1.25rem, 1.6vw, 2rem);
+}
+.screen-inside .inside-card h3 {
+  font-weight: 800;
+  font-size: clamp(1.35rem, 1.6vw, 1.9rem);
+  margin-bottom: .5rem;
+}
+.screen-inside .inside-card p {
+  font-size: clamp(.95rem, 1vw, 1.15rem);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Кнопка раскрытия */
+.btn-profile {
+  margin-top: clamp(1.5rem, 4vh, 2.5rem);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.05vw, 1.2rem);
+  color: var(--heading);
+  border: 2px solid var(--heading);
+  border-radius: 50rem;
+  padding: .75em 2em;
+  background: transparent;
+}
+.btn-profile:hover,
+.btn-profile:focus-visible { background: var(--heading); color: #fff; border-color: var(--heading); }
+.btn-profile .when-open { display: none; }
+.btn-profile[aria-expanded="true"] .when-open { display: inline; }
+.btn-profile[aria-expanded="true"] .when-closed { display: none; }
+
+/* Раскрывающийся блок */
+.screen-inside .profile-body {
+  padding-top: clamp(1.5rem, 4vh, 2.5rem);
+  max-width: 820px;
+  margin: 0 auto;
+}
+.screen-inside .profile-img {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto 2rem;
+  border-radius: 1.25rem;
+}
+.screen-inside .profile-text { font-style: italic; }
+.screen-inside .profile-text h3 {
+  font-weight: 700;
+  font-size: clamp(1.15rem, 1.3vw, 1.5rem);
+  margin: 1.5rem 0 .5rem;
+}
+.screen-inside .profile-text h3:first-child { margin-top: 0; }
+.screen-inside .profile-text p {
+  font-size: clamp(1rem, 1vw, 1.15rem);
+  line-height: 1.6;
+}
+.screen-inside .profile-note {
+  font-size: clamp(.75rem, .7vw, .85rem) !important;
+  color: rgba(0, 0, 0, .65);
+  margin: 0;
+}
+
+/* Экран 5: отступ под фиксированным меню при прокрутке */
+#aminoProfile { scroll-margin-top: calc(var(--nav-h) + 1rem); }
+
+/* Экран 5: таблица 4.jpg с увеличением */
+.zoom-trigger {
+  display: block;
+  position: relative;
+  margin: 2rem auto 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  max-width: 600px;
+  width: 100%;
+}
+.zoom-trigger .profile-table { margin: 0; }
+.zoom-hint {
+  position: absolute;
+  right: .75rem;
+  bottom: .75rem;
+  background: var(--heading);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 700;
+  padding: .35em .9em;
+  border-radius: 50rem;
+}
+.zoom-trigger:focus-visible { outline: 3px solid var(--heading); outline-offset: 4px; border-radius: 1.25rem; }
+.zoom-content { background: transparent; border: 0; border-radius: 1rem; overflow: hidden; }
+.zoom-img { display: block; width: 100%; height: auto; max-height: 92svh; object-fit: contain; }
+.zoom-close {
+  position: absolute;
+  top: .75rem;
+  right: .75rem;
+  z-index: 2;
+  background-color: #fff;
+  opacity: 1;
+  padding: .6rem;
+  border-radius: 50%;
+}
+
+/* ---------- ЭКРАН 6: FAQ ---------- */
+.faq-heading {
+  font-weight: 900;
+  font-size: clamp(2.25rem, 3.8vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: clamp(1.25rem, 3.5vh, 2.5rem);
+}
+.faq-list {
+  max-width: 900px;
+  margin: 0 auto;
+  --bs-accordion-bg: rgba(255, 255, 255, .55);
+  --bs-accordion-border-color: rgba(1, 129, 18, .25);
+  --bs-accordion-border-radius: 1.25rem;
+  --bs-accordion-inner-border-radius: 1.25rem;
+  --bs-accordion-btn-color: var(--heading);
+  --bs-accordion-active-color: var(--heading);
+  --bs-accordion-active-bg: rgba(255, 255, 255, .8);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 .2rem rgba(1, 129, 18, .3);
+  --bs-accordion-btn-padding-y: 1.1rem;
+  --bs-accordion-btn-padding-x: 1.5rem;
+  --bs-accordion-body-padding-x: 1.5rem;
+}
+.faq-list .accordion-button {
+  font-weight: 700;
+  font-size: clamp(1.05rem, 1.15vw, 1.35rem);
+}
+.faq-list .accordion-body {
+  font-size: clamp(1rem, 1vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* ---------- ЭКРАН 9: Финал ---------- */
+.screen-final .final-img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: clamp(280px, 55vh, 620px);
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  margin: 0 auto clamp(1.5rem, 3vh, 2.5rem);
+  border-radius: 1.25rem;
+}
+.screen-final .final-title {
+  font-weight: 900;
+  font-size: clamp(2rem, 3.4vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -.015em;
+  max-width: 16em;
+  margin: 0 auto 2rem;
+}
+
+/* ---------- Футер ---------- */
+.site-footer {
+  background: #cfd5d1;
+  border-top: 3px solid var(--heading);
+  padding: clamp(2rem, 5vh, 3rem) 0;
+  text-align: center;
+  margin-top: var(--screen-pad);
+}
+.footer-logo { height: 36px; width: auto; margin-bottom: 1.25rem; }
+.footer-disclaimer {
+  font-size: 1rem;           /* хорошо читаемый размер */
+  line-height: 1.6;
+  color: #000;
+  max-width: 760px;
+  margin: 0 auto 1rem;
+}
+.footer-copy { font-size: .95rem; color: #333; margin: 0; }
